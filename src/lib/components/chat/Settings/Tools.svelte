@@ -39,7 +39,7 @@
 	});
 </script>
 
-<AddServerModal bind:show={showConnectionModal} onSubmit={addConnectionHandler} />
+<AddServerModal bind:show={showConnectionModal} onSubmit={addConnectionHandler} direct />
 
 <form
 	class="flex flex-col h-full justify-between text-sm"
@@ -74,9 +74,8 @@
 						<div class="flex flex-col gap-1.5">
 							{#each servers as server, idx}
 								<Connection
-									bind:url={server.url}
-									bind:key={server.key}
-									bind:config={server.config}
+									bind:connection={server}
+									direct
 									onSubmit={() => {
 										updateHandler();
 									}}
